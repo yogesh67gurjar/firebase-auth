@@ -1,61 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="25dp"
         android:background="@drawable/ll_bg"
         android:elevation="20dp"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="18dp">
+        android:paddingVertical="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+
             android:id="@+id/emailEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="10dp"
-            android:ems="12"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:textColor="@color/blue"
-            android:textColorHint="#000000" />
+            android:textColorHint="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/passwordEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="10dp"
-            android:ems="12"
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/blue"
-            android:textColorHint="#000000" />
+            android:textColorHint="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailEt" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginBtn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/gradient_button_bg"
+            android:paddingHorizontal="35dp"
             android:text="Log In"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/blue"
             android:textSize="21sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordEt" />
 
         <TextView
             android:id="@+id/goToSignUpTv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
@@ -63,41 +78,92 @@
             android:textAlignment="viewEnd"
             android:textColor="@color/blue"
             android:textSize="13sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginBtn" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginVertical="10dp"
+            android:id="@+id/ll"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/goToSignUpTv">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/googleSignInBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_google"
+                android:layout_marginEnd="6dp"
+                android:drawableStart="@drawable/google"
                 android:drawablePadding="10dp"
                 android:elevation="10dp"
+                android:paddingHorizontal="15dp"
                 android:text="Google"
-                android:layout_marginEnd="6dp"
+                android:background="@drawable/white_bg"
                 android:textColor="@color/blue"
+                android:textSize="11sp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/facebookSignInBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_facebook"
-                android:drawablePadding="10dp"
                 android:layout_marginStart="6dp"
-                android:background="#FFFFFF"
+                android:background="@drawable/white_bg"
+                android:drawableStart="@drawable/facebook"
+                android:drawablePadding="10dp"
                 android:elevation="10dp"
+                android:paddingHorizontal="15dp"
                 android:text="Facebook"
                 android:textColor="@color/blue"
+                android:textSize="11sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
-    </LinearLayout>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/signInWithPhoneTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableStart="@drawable/telephone"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="Sign In With Phone"
+            android:textAlignment="center"
+            android:textColor="@color/blue"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/signInAsGuest"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll" />
+
+        <TextView
+            android:id="@+id/signInAsGuest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/user"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="Sign In As Guest"
+            android:textAlignment="center"
+            android:textColor="@color/blue"
+            android:textSize="11sp"
+
+            app:layout_constraintBottom_toBottomOf="@+id/signInWithPhoneTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/signInWithPhoneTv"
+            app:layout_constraintTop_toTopOf="@+id/signInWithPhoneTv" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

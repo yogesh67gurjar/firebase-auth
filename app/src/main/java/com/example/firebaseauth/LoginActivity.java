@@ -43,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         binding=ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        auth=FirebaseAuth.getInstance();
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -50,13 +52,6 @@ public class LoginActivity extends AppCompatActivity {
 
         gsc = GoogleSignIn.getClient(this, gso);
 
-
-        binding.goToSignUpTv.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this,SignupActivity.class));
-            finish();
-        });
-
-        auth=FirebaseAuth.getInstance();
     }
 
     @Override
@@ -95,6 +90,38 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        binding.goToSignUpTv.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this,SignupActivity.class));
+            finish();
+        });
+
+        binding.signInAsGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful())
+                        {
+                            FirebaseUser currentUser=auth.getCurrentUser();
+                            updateUI(currentUser);
+                        }
+                        else
+                        {
+                            Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+        binding.signInWithPhoneTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,PhoneSignInActivity.class));
+            }
+        });
     }
 
     private void SignInWithEmailPassword() {

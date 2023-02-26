@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         updateUI(null);
                     }
-
                 }
             });
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
