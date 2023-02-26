@@ -24,6 +24,7 @@ ActivityPhoneSignInBinding binding;
                 Intent intent=new Intent(PhoneSignInActivity.this,OtpVerificationActivity.class);
                 intent.putExtra("mobileNo",binding.ccp.getFullNumberWithPlus().trim());
                 startActivity(intent);
+                finish();
             }
         });
     }
